@@ -2351,10 +2351,10 @@
   resolved "https://registry.yarnpkg.com/hardhat-deploy-ethers/-/hardhat-deploy-ethers-0.3.0-beta.10.tgz#bccfcf635d380bbab3638960f6739fe4d396fc5f"
   integrity sha512-TeyriUshRZ7XVHOjMsDtTozIrdwLf3Bw+oZRYNhXdG/eut5HeDhjUFPfRlG7TI1lSLvkcB5dt7OxOtPYKDOxTg==
 
-"@nomiclabs/hardhat-etherscan@^2.1.7":
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/@nomiclabs/hardhat-etherscan/-/hardhat-etherscan-2.1.7.tgz#f76ce0da1b503d3e506bffbd044967b1a9443675"
-  integrity sha512-9nt9EXubnkd2aTMnQIqKtp80bQFhun88krfB31FN2wB0T54b8YuK0riG2d+EKq/D3t1Kb00oA7oFSFpHLIbLDQ==
+"@nomiclabs/hardhat-etherscan@^3.0.1-rc.0":
+  version "3.0.1-rc.0"
+  resolved "https://registry.npmmirror.com/@nomiclabs/hardhat-etherscan/download/@nomiclabs/hardhat-etherscan-3.0.1-rc.0.tgz#541c19fd1e1d7744e769f5b6e7dd098bb9e6d739"
+  integrity sha512-k9lzXf4n3qPux8dmOgxuDPtE18As8JliIpC6FBzwdrP2kDpEqpFtepP8k6EF8r2j7oyTfvE/hLvRJPGVc32P0g==
   dependencies:
     "@ethersproject/abi" "^5.1.2"
     "@ethersproject/address" "^5.0.2"

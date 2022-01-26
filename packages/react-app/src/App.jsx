@@ -60,7 +60,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS.localhost; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.kovan; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -486,6 +486,9 @@ function App(props) {
   const buyTokensEvents = useEventListener(readContracts, "Vendor", "BuyTokens", localProvider, 1);
   console.log("📟 buyTokensEvents:", buyTokensEvents);
 
+  const sellTokensEvents = useEventListener(readContracts, "Vendor", "SellTokens", localProvider, 1);
+  console.log("📟 sellTokensEvents:", sellTokensEvents);
+
   const [tokenBuyAmount, setTokenBuyAmount] = useState();
   const [tokenSellAmount, setTokenSellAmount] = useState();
   const [isSellAmountApproved, setIsSellAmountApproved] = useState();
@@ -570,7 +573,7 @@ function App(props) {
               YourToken
             </Link>
           </Menu.Item>
-          <Menu.Item key="/contracts">
+          {/*<Menu.Item key="/contracts">
             <Link
               onClick={() => {
                 setRoute("/contracts");
@@ -579,7 +582,7 @@ function App(props) {
             >
               Debug Contracts
             </Link>
-          </Menu.Item>
+          </Menu.Item>*/}
         </Menu>
 
         <Switch>
@@ -626,8 +629,6 @@ function App(props) {
             </div>
 
             {/*Extra UI for buying the tokens back from the user using "approve" and "sellTokens"*/}
-            
-            {/*
 
             <Divider />
             <div style={{ padding: 8, marginTop: 32, width: 300, margin: "auto" }}>
@@ -648,10 +649,7 @@ function App(props) {
                 {isSellAmountApproved?
 
                   <div style={{ padding: 8 }}>
-                    <Button
-                      disabled={true}
-                      type={"primary"}
-                    >
+                    <Button disabled={true} type={"primary"}>
                       Approve Tokens
                     </Button>
                     <Button
@@ -698,8 +696,6 @@ function App(props) {
               </Card>
             </div>
 
-            */}
-
             <div style={{ padding: 8, marginTop: 32 }}>
               <div>Vendor Token Balance:</div>
               <Balance balance={vendorTokenBalance} fontSize={64} />
@@ -711,6 +707,21 @@ function App(props) {
             </div>
 
             <div style={{ width: 500, margin: "auto", marginTop: 64 }}>
+            <div>Sell Token Events:</div>
+              <List
+                dataSource={sellTokensEvents}
+                renderItem={item => {
+                  return (
+                    <List.Item key={item.blockNumber + item.blockHash}>
+                      <Address value={item.args[0]} ensProvider={mainnetProvider} fontSize={16} /> sell
+                      <Balance balance={item.args[2]} />
+                      Tokens to get
+                      <Balance balance={item.args[1]} />
+                      ETH
+                    </List.Item>
+                  );
+                }}
+              />
               <div>Buy Token Events:</div>
               <List
                 dataSource={buyTokensEvents}
@@ -744,7 +755,7 @@ function App(props) {
             />
             */}
           </Route>
-          <Route path="/contracts">
+          {/*<Route path="/contracts">
             <Contract
               name="Vendor"
               signer={userSigner}
@@ -761,7 +772,7 @@ function App(props) {
               blockExplorer={blockExplorer}
               contractConfig={contractConfig}
             />
-          </Route>
+          </Route>*/}
         </Switch>
       </BrowserRouter>
 
@@ -784,7 +795,13 @@ function App(props) {
       </div>
 
       <div style={{ marginTop: 32, opacity: 0.5 }}>
-        Created by <Address value={"Your...address"} ensProvider={mainnetProvider} fontSize={16} />
+        Created by{"Xy Ma"}
+        <Address
+          blockExplorer={blockExplorer}
+          value={"0x6b7667dd584d2356af3ca074a4e7d8706527e457"}
+          ensProvider={mainnetProvider}
+          fontSize={16}
+        />
       </div>
 
       <div style={{ marginTop: 32, paddingBottom: 128, opacity: 0.5 }}>

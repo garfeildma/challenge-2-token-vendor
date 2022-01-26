@@ -25,7 +25,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost";
+const defaultNetwork = "kovan";
 
 const mainnetGwei = 115;
 
@@ -67,7 +67,7 @@ module.exports = {
       },
     },
     kovan: {
-      url: "https://kovan.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
+      url: "https://kovan.infura.io/v3/7478f30c29194892b4102475782d6028", // <---- YOUR INFURA ID! (or it won't work)
       //    url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/eth/kovan", // <---- YOUR MORALIS ID! (not limited to infura)
       accounts: {
         mnemonic: mnemonic(),
@@ -225,6 +225,14 @@ module.exports = {
         mnemonic: mnemonic(),
       },
     },
+    moonbaseAlpha: {
+      url: "https://moonbeam-alpha.api.onfinality.io/public",
+      gasPrice: 1000000000,
+      chainId: 1287,
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+    },
   },
   solidity: {
     compilers: [
@@ -257,7 +265,11 @@ module.exports = {
     },
   },
   etherscan: {
-    apiKey: "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8", // your api key here
+    apiKey: {
+      mainnet: "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8",
+      kovan: "RCB9V29DRK2ZC5D9E1HINGNIMC1VDZ9DV7",
+      moonbaseAlpha: "QEGAD2GF6JJ79592X7TJC7WRR557JFRAZ6",
+    },
   },
 };
 
