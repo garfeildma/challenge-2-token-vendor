@@ -1,5 +1,7 @@
 # 🏗 scaffold-eth | 🏰 BuidlGuidl
 
+[Try it!](https://kovan_gld.surge.sh)
+
 ## 🚩 Challenge 2: 🏵 Token Vendor 🤖
 
 
